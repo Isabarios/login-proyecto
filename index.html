@@ -2,28 +2,114 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Login Escolar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    body { font-family: Arial; background-color: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
-    form { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px #ccc; width: 300px; }
-    input { width: 100%; padding: 10px; margin: 10px 0; }
-    button { width: 100%; padding: 10px; background: #28a745; color: #fff; border: none; border-radius: 5px; }
-    .error { color: red; font-size: 14px; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+    body {
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .form-container {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      width: 380px;
+      text-align: center;
+    }
+    .form-container img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #3a3a3a;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px 45px 12px 15px;
+      border-radius: 10px;
+      border: 2px solid #c5c5c5;
+      font-size: 16px;
+      transition: border 0.3s ease;
+    }
+    .form-group input:focus {
+      border-color: #6495ED;
+      outline: none;
+    }
+    .form-group i {
+      position: absolute;
+      right: 15px;
+      top: 13px;
+      color: #6495ED;
+      font-size: 18px;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #6495ED;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background-color: #4169E1;
+    }
+    .footer-text {
+      font-size: 13px;
+      color: #777;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
-  <form id="loginForm" method="POST" action="login.php" onsubmit="return validarFormulario()">
-    <h2>Iniciar Sesión</h2>
-    <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
-    <input type="password" id="clave" name="clave" placeholder="Contraseña" required>
-    <p class="error" id="mensajeError"></p>
-    <button type="submit">Entrar</button>
-  </form>
+
+  <div class="form-container">
+    <!-- Puedes cambiar esta imagen por el logo de tu colegio -->
+    <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="Logo Colegio">
+    <h2>Portal del Estudiante</h2>
+    <form id="loginForm" method="POST" action="login.php" onsubmit="return validarFormulario()">
+      <div class="form-group">
+        <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <div class="form-group">
+        <input type="password" id="clave" name="clave" placeholder="Contraseña" required>
+        <i class="fas fa-lock"></i>
+      </div>
+      <p class="error" id="mensajeError"></p>
+      <button type="submit" class="btn">Entrar al Aula</button>
+    </form>
+    <p class="footer-text">© Colegio Nacional - Sistema Académico</p>
+  </div>
 
   <script>
     function validarFormulario() {
-      const usuario = document.getElementById("usuario").value;
-      const clave = document.getElementById("clave").value;
+      const usuario = document.getElementById("usuario").value.trim();
+      const clave = document.getElementById("clave").value.trim();
       const mensajeError = document.getElementById("mensajeError");
 
       if (usuario.length < 3 || clave.length < 5) {
@@ -34,5 +120,6 @@
       return true;
     }
   </script>
+
 </body>
 </html>
