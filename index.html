@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body { font-family: Arial; background-color: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    form { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px #ccc; width: 300px; }
+    input { width: 100%; padding: 10px; margin: 10px 0; }
+    button { width: 100%; padding: 10px; background: #28a745; color: #fff; border: none; border-radius: 5px; }
+    .error { color: red; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <form id="loginForm" method="POST" action="login.php" onsubmit="return validarFormulario()">
+    <h2>Iniciar Sesión</h2>
+    <input type="text" id="usuario" name="usuario" placeholder="Usuario" required>
+    <input type="password" id="clave" name="clave" placeholder="Contraseña" required>
+    <p class="error" id="mensajeError"></p>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <script>
+    function validarFormulario() {
+      const usuario = document.getElementById("usuario").value;
+      const clave = document.getElementById("clave").value;
+      const mensajeError = document.getElementById("mensajeError");
+
+      if (usuario.length < 3 || clave.length < 5) {
+        mensajeError.textContent = "Usuario mínimo 3 letras y contraseña mínimo 5.";
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
